@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.*;
 
 @RestController
 @RequestMapping("/api/todos")
@@ -13,8 +14,19 @@ public class TodoController {
 
     // Get all Todos
     @GetMapping
-    public ResponseEntity<List<Todo>> getAllTodos() {
-        return ResponseEntity.ok(todos);
+    public ResponseEntity<List<Todo>> getAllTodos(@RequestParam(required = false) Boolean completed, @RequestParam(required = false) String title, @RequestParam(required = false) Integer id) {
+        Stream<Todo> stream = todos.stream();
+        if (completed != null) {
+            stream = stream.filter(todo -> todo.isCompleted() == completed);
+        }
+        if (title != null) {
+            stream = stream.filter(todo -> todo.getTitle().equals(title));
+        }
+        if (id != null) {
+            stream = stream.filter(todo -> todo.getId() == id);
+        }
+        List<Todo> filteredTodos = stream.collect(Collectors.toList());
+        return ResponseEntity.ok(filteredTodos);
     }
 
     // Get a single Todo by ID
