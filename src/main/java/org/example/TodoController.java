@@ -41,9 +41,8 @@ public class TodoController {
 
     // Create a new Todo
     @PostMapping
-    public ResponseEntity<Todo> addTodo(@RequestBody String title) {
-        Todo newTodo = new Todo(title);
-        todos.add(newTodo);
+    public ResponseEntity<Todo> addTodo(@RequestBody Todo newTodo) {
+        todos.add(new Todo(newTodo.getTitle()));
         return ResponseEntity.ok(newTodo);
     }
 

@@ -12,9 +12,14 @@ public class Todo {
     private final LocalDateTime creationDateTime;
 
     public Todo(String title) {
+        this();
+        this.title = title;
+    }
+
+    // No-arg constructor for JSON deserialization
+    public Todo() {
         this.id = ++count; // Auto-increment ID
         this.completed = false; // Default value
-        this.title = title;
         this.creationDateTime = LocalDateTime.now(); // Set creation time to now
     }
 
