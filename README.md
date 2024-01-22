@@ -77,7 +77,10 @@ Use `curl` to interact with the application. Examples:
 - **Description:** Create a new todo item.
 - **Curl Example:**
   ```bash
-  curl -X POST http://localhost:8080/api/todos -H "Content-Type: application/json" -d '{"title": "Buy milk"}'
+  curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"title": "Buy milk"}' \
+    http://localhost:8080/api/todos
   ```
 
 ### 4. Update an Existing Todo
@@ -85,7 +88,10 @@ Use `curl` to interact with the application. Examples:
 - **Description:** Update the details of an existing todo.
 - **Curl Example:**
   ```bash
-  curl -X PUT http://localhost:8080/api/todos/1 -H "Content-Type: application/json" -d '{"title": "Buy bread", "completed": false}'
+  curl -X PUT \
+    -H "Content-Type: application/json" \
+    -d '{"title": "Buy bread", "completed": false}' \
+    http://localhost:8080/api/todos/1
   ```
 
 ### 5. Mark a Todo as Completed
