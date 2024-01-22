@@ -15,7 +15,7 @@ This Todo List Web Application provides a simple yet powerful way to manage your
 
 ## Team Composition
 - **Ahmad Jano**: API developper.
-- **Komarov Sergey**: Server deployer and maintiner.
+- **Komarov Sergey**: Server deployer and maintainer.
 
 ## Installation and Configuration
 ### Prerequisites
@@ -46,17 +46,62 @@ To configure the DNS zone for accessing the web application:
 ## Interacting with the Application
 Use `curl` to interact with the application. Examples:
 
-- Get all Todos:
+### 1. Get All Todos
+- **Endpoint:** `GET /api/todos`
+- **Description:** Retrieve all todos. Can filter by completion status, title, or ID.
+- **Curl Example:**
   ```bash
+  # Get all todos
   curl http://localhost:8080/api/todos
+
+  # Get todos with specific completion status (true or false)
+  curl http://localhost:8080/api/todos?completed=true
+
+  # Get todos with a specific title
+  curl "http://localhost:8080/api/todos?title=Buy%20milk"
+
+  # Get todos with a specific ID
+  curl http://localhost:8080/api/todos?id=1
   ```
-- Add a Todo:
+
+### 2. Get Single Todo by ID
+- **Endpoint:** `GET /api/todos/{id}`
+- **Description:** Retrieve a specific todo by its ID.
+- **Curl Example:**
+  ```bash
+  curl http://localhost:8080/api/todos/1
+  ```
+
+### 3. Create a New Todo
+- **Endpoint:** `POST /api/todos`
+- **Description:** Create a new todo item.
+- **Curl Example:**
   ```bash
   curl -X POST http://localhost:8080/api/todos -H "Content-Type: application/json" -d '{"title": "Buy milk"}'
   ```
-- Mark a todo as completed:
+
+### 4. Update an Existing Todo
+- **Endpoint:** `PUT /api/todos/{id}`
+- **Description:** Update the details of an existing todo.
+- **Curl Example:**
   ```bash
-  curl -X PUT http://localhost:8080/api/todos/{id}/completed
+  curl -X PUT http://localhost:8080/api/todos/1 -H "Content-Type: application/json" -d '{"title": "Buy bread", "completed": false}'
+  ```
+
+### 5. Mark a Todo as Completed
+- **Endpoint:** `PUT /api/todos/{id}/completed`
+- **Description:** Mark a specific todo as completed.
+- **Curl Example:**
+  ```bash
+  curl -X PUT http://localhost:8080/api/todos/1/completed
+  ```
+
+### 6. Delete a Todo
+- **Endpoint:** `DELETE /api/todos/{id}`
+- **Description:** Delete a specific todo by its ID.
+- **Curl Example:**
+  ```bash
+  curl -X DELETE http://localhost:8080/api/todos/1
   ```
 
 ## Cloning and Running with Git
