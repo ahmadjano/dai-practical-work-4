@@ -111,6 +111,8 @@ Use `curl` to interact with the application. Examples:
   ```bash
   curl -X DELETE http://www.shadyseko.dedyn.io/api/todos/1
   ```
+## Little hint
+Upon recieving the HTTP responses via curl in the terminal, it can be useful to pipe the response to a json parser, like jq for example for more readability
 
 ## Cloning and Running with Git
 1. On the server, install Git: `apt-get install git`.
