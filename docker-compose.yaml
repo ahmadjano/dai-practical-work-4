@@ -11,7 +11,7 @@ services:
       - traefik.docker.network=traefik
       - traefik.http.routers.app.entrypoints=http
       - traefik.http.services.app.loadbalancer.server.port=8080
-      - traefik.http.routers.app.rule=Host(`www.shadyseko.dedyn.io`)
+      - traefik.http.routers.app.rule=Host(`web.shadyseko.dedyn.io`)
     networks:
       - traefik
 
