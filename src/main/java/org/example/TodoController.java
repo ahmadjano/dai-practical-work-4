@@ -42,7 +42,7 @@ public class TodoController {
     // Create a new Todo
     @PostMapping
     public ResponseEntity<Todo> addTodo(@RequestBody Todo newTodo) {
-        todos.add(new Todo(newTodo.getTitle()));
+        todos.add(newTodo);
         return ResponseEntity.ok(newTodo);
     }
 
