@@ -25,23 +25,25 @@ This Todo List Web Application provides a simple yet powerful way to manage your
 - Git
 
 ### Steps
-1. Clone the repository: `git clone https://github.com/username/repo.git`
-2. Navigate to the project directory: `cd todo-app`
+1. Clone the repository: `git clone https://github.com/ahmadjano/dai-practical-work-4`
+2. Navigate to the project directory.
 3. Build the project: `mvn clean package`
 
 ## Deployment and Running the Application
-1. Start the server: `java -jar target/todo-app-1.0-SNAPSHOT.jar`
-2. The server will start at `http://localhost:8080`.
+### On the server
+1. Build the traefik container image: `docker compose -f traefik/docker-compose.yml up --build`. This will start the traefik reverse proxy server.
+2. Build the app container image: `docker compose up --build`. This will start the web application server.
+3. The server will start at `http://www.shadyseko.dedyn.io`.
 
 ## DNS Zone Configuration
 To configure the DNS zone for accessing the web application:
 1. Update the A record in your DNS zone to point to the server's IP address.
 2. Configure the server to respond to the domain name.
 
-## Building with Docker
-1. Create a Dockerfile in the project root.
-2. Build the image: `docker build -t todo-app .`
-3. Run the container: `docker run -p 8080:8080 todo-app`
+## In our configuration:
+  The server is already accessible via the URL above.
+  The server is running on a virtual machine, so to test the api, you
+  can simply follow the following: 
 
 ## Interacting with the Application
 Use `curl` to interact with the application. Examples:
@@ -52,16 +54,16 @@ Use `curl` to interact with the application. Examples:
 - **Curl Example:**
   ```bash
   # Get all todos
-  curl http://localhost:8080/api/todos
+  curl http://www.shadyseko.dedyn.io/api/todos
 
   # Get todos with specific completion status (true or false)
-  curl http://localhost:8080/api/todos?completed=true
+  curl http://www.shadyseko.dedyn.io/api/todos?completed=true
 
   # Get todos with a specific title
-  curl "http://localhost:8080/api/todos?title=Buy%20milk"
+  curl "http://www.shadyseko.dedyn.io/api/todos?title=Buy%20milk"
 
   # Get todos with a specific ID
-  curl http://localhost:8080/api/todos?id=1
+  curl http://www.shadyseko.dedyn.io/api/todos?id=1
   ```
 
 ### 2. Get Single Todo by ID
@@ -69,7 +71,7 @@ Use `curl` to interact with the application. Examples:
 - **Description:** Retrieve a specific todo by its ID.
 - **Curl Example:**
   ```bash
-  curl http://localhost:8080/api/todos/1
+  curl http://www.shadyseko.dedyn.io/api/todos/1
   ```
 
 ### 3. Create a New Todo
@@ -80,7 +82,7 @@ Use `curl` to interact with the application. Examples:
   curl -X POST \
     -H "Content-Type: application/json" \
     -d '{"title": "Buy milk"}' \
-    http://localhost:8080/api/todos
+    http://www.shadyseko.dedyn.io/api/todos
   ```
 
 ### 4. Update an Existing Todo
@@ -91,7 +93,7 @@ Use `curl` to interact with the application. Examples:
   curl -X PUT \
     -H "Content-Type: application/json" \
     -d '{"title": "Buy bread", "completed": false}' \
-    http://localhost:8080/api/todos/1
+    http://www.shadyseko.dedyn.io/api/todos/1
   ```
 
 ### 5. Mark a Todo as Completed
@@ -99,7 +101,7 @@ Use `curl` to interact with the application. Examples:
 - **Description:** Mark a specific todo as completed.
 - **Curl Example:**
   ```bash
-  curl -X PUT http://localhost:8080/api/todos/1/completed
+  curl -X PUT http://www.shadyseko.dedyn.io/api/todos/1/completed
   ```
 
 ### 6. Delete a Todo
@@ -107,8 +109,10 @@ Use `curl` to interact with the application. Examples:
 - **Description:** Delete a specific todo by its ID.
 - **Curl Example:**
   ```bash
-  curl -X DELETE http://localhost:8080/api/todos/1
+  curl -X DELETE http://www.shadyseko.dedyn.io/api/todos/1
   ```
+## Little hint
+Upon recieving the HTTP responses via curl in the terminal, it can be useful to pipe the response to a json parser, like jq for example for more readability
 
 ## Cloning and Running with Git
 1. On the server, install Git: `apt-get install git`.
