@@ -25,7 +25,7 @@ This Todo List Web Application provides a simple yet powerful way to manage your
 - Git
 
 ### Steps
-1. Clone the repository: `git clone https://github.com/ahmadjano/dai-practical-work-4`
+1. Clone the repository: `git clone https://github.com/ahmadjano/todos-app
 2. Navigate to the project directory.
 3. Build the project: `mvn clean package`
 
